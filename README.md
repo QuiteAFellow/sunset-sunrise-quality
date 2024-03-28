@@ -52,3 +52,5 @@ After obtaining the image, it reads a 20 pixel square area around the GPS coordi
 - Improve adjustments needed for the x,y, coordinates of the image for a provided GPS coordinate
 - Find a better way to parse the text of the image
 - Improve the algorithms for calculating the sunset quality
+- Adjust the current way the script handles someone looking for Sunrise quality
+- Wrap the script in a loop so it automatically checks the sunset/sunrise quality at 3pm/9pm respectively

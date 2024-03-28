@@ -71,7 +71,7 @@ GPS_COORDS_TO_CHECK = (25.761681, -80.191788)
 #This will be changed with user desired value
 #Currently set to Charlotte
 
-CHECK_FOR_SUNSET = True #if set to false that means sunrise check
+CHECK_FOR_SUNSET = False #if set to false that means sunrise check
 
 if CHECK_FOR_SUNSET:
     URL_BASE = URL_BASE.replace("sunrise", "sunset")
