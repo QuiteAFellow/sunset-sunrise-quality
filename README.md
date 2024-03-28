@@ -1,11 +1,11 @@
-# Sunset / Sunrise quality for Europe
-Small python program that pull data from sunsetwx.com for Europe only and give a sunset/sunrise quality according to GPS Coordinates.
+# Sunset / Sunrise quality for any location in the continential United States
+A small python program that pulls data from sunsetwx.com and give a sunset/sunrise quality according to the provided GPS Coordinates.
 
 **USAGE**:
 ```bash
-$ python sunset.py sunrise 47.164935 -6.825596
-Predicting for GPS coordinates: (47.164935, -6.825596)
-sunrise time in zulu: 7
+$ python sunset.py sunrise 25.761681, -80.191788
+Predicting for GPS coordinates: (25.761681, -80.191788)
+sunrise time in zulu: 7Z
 The sunset quality is 49%
 
 ```
@@ -13,9 +13,9 @@ The sunset quality is 49%
 **RUN With docker :)**
 ```bash
 $ docker build -t sunset .
-$ docker run -it --rm sunset sunrise 47.164935 -6.825596
-Predicting for GPS coordinates: (47.164935, -6.825596)
-sunrise time in zulu: 7
+$ docker run -it --rm sunset sunrise 25.761681, -80.191788
+Predicting for GPS coordinates: (25.761681, -80.191788)
+sunrise time in zulu: 7Z
 The sunset quality is 49%
 ```
 
@@ -39,17 +39,16 @@ pip install tesseract-ocr
 ```
 
 
-## HOW does it works ?
-When you go to this [URL](https://sunsetwx.com/view/?id=5) you will se an image that shows colors for sunset quality.
-More redish the color is, better sunset you will get. These images are generated very 3 hours according to the GFS Weather model. The validation time is described in ZULU on the top middle of the image. This time is independent of any position (ZULU Time).
+## How does it work?
+[Sunsetwx.com](https://sunsetwx.com/view/?id=5) provides a map of the United States every day as an attempt to predict the quality of the sunset for that day.
+The closer to an intense red the location is, better quality sunset you can expect. These images are generated very 3 hours according to the NAM Weather model. The validation time is described in ZULU on the top middle of the image, and this time is independent of any position (ZULU Time).
 
-The small python program, get the sunset/sunrise time for a GPS coordinates, download a bunch on these images and select the best one for the concerned sunset time.
-After obtaining the image, it reads a 20 pixel square around the GPS coordinates (thanks to the scale the image provides).
-
-A pourcentage of the sunset quality will be returned according to the right scale.
+This program parses the sunset/sunrise time for a pre-provided GPS coordinate, downloads every available image for the run of that selected day and selects the best one for the concerned sunset time.
+After obtaining the image, it reads a 20 pixel square area around the GPS coordinates and returns the sunset quality percentage according to the scale on the right-hand side of the image.
 
 
-## Improuvments
-- don't download all image each time
+## Possible future improvements
+- Improve algorithms for determining the best image to select for a location before calculating percentage
+- Improve adjustments needed for the x,y, coordinates of the image for a provided GPS coordinate
 - Find a better way to parse the text of the image
-- Improve the algorithms for calculating the quality
+- Improve the algorithms for calculating the sunset quality
