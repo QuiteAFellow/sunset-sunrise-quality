@@ -44,13 +44,12 @@ pip install tesseract-ocr
 The closer to an intense red the location is, better quality sunset you can expect. These images are generated very 3 hours according to the NAM Weather model. The validation time is described in ZULU on the top middle of the image, and this time is independent of any position (ZULU Time).
 
 This program parses the sunset/sunrise time for a pre-provided GPS coordinate, downloads every available image for the run of that selected day and selects the best one for the concerned sunset time.
-After obtaining the image, it reads a 20 pixel square area around the GPS coordinates and returns the sunset quality percentage according to the scale on the right-hand side of the image.
+After obtaining the image, it reads a 20 pixel square area around the GPS coordinates and returns the sunset quality percentage according to the scale on the right-hand side of the image. It also provides the time the sunset/sunrise will occur on, and a cropped version of the image for a visual representation of the sunset/sunrise quality
 
 
 ## Possible future improvements
-- Improve algorithms for determining the best image to select for a location before calculating percentage
 - Improve adjustments needed for the x,y, coordinates of the image for a provided GPS coordinate
 - Find a better way to parse the text of the image
 - Improve the algorithms for calculating the sunset quality
-- Adjust the current way the script handles someone looking for Sunrise quality
 - Wrap the script in a loop so it automatically checks the sunset/sunrise quality at 3pm/9pm respectively
+- Discord integration
